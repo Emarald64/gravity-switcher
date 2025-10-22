@@ -2,13 +2,15 @@
 
 Platforming game where you switch gravity
 
-Inspired by VVVVVV
+Inspired by [VVVVVV](https://store.steampowered.com/app/70300/VVVVVV/)
+
+Tileset from https://kenney.nl/assets/1-bit-platformer-pack
 
 Made with the Godot Engine
 
 ## To play:
 
-Run the web version or download the desktop buils from the game's page on [itch.io](https://xanderath.itch.io/signals)
+Run the web version or download the desktop buils from the game's page on [itch.io](https://xanderath.itch.io/)
 
 or
 
