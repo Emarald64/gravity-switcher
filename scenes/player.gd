@@ -30,6 +30,7 @@ func _physics_process(_delta: float) -> void:
 
 func respawn() -> void:
 	print('respawn')
+	get_node('../Camera2D').add_trauma(0.3)
 	position=checkpoint.global_position
 
 
