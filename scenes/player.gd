@@ -3,9 +3,13 @@ extends CharacterBody2D
 
 const SPEED = 600
 var gravityUp:=false
-
+@onready var checkpoint:=get_node("../StartPos")
+var respawnFlipped:=false
 
 func _physics_process(_delta: float) -> void:
+	if Input.is_key_pressed(KEY_R):
+		respawn()
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity = get_gravity() * (-1 if gravityUp else 1)
@@ -22,3 +26,7 @@ func _physics_process(_delta: float) -> void:
 	
 
 	move_and_slide()
+
+
+func respawn() -> void:
+	position=checkpoint.global_position

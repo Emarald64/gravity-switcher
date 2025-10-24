@@ -4,14 +4,24 @@
 [ext_resource type="Texture2D" uid="uid://d2qj0gq6se3ib" path="res://icon.svg" id="2_qhqgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
-size = Vector2(64, 128)
+size = Vector2(64, 86)
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 4
 script = ExtResource("1_g2els")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 1)
+scale = Vector2(0.5, 0.666)
 texture = ExtResource("2_qhqgy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_dqkch")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_dqkch")
+
+[connection signal="area_entered" from="Hurtbox" to="." method="respawn" unbinds=1]
