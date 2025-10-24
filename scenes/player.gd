@@ -29,4 +29,9 @@ func _physics_process(_delta: float) -> void:
 
 
 func respawn() -> void:
+	print('respawn')
 	position=checkpoint.global_position
+
+
+func hit(_area: Node2D) -> void:
+	respawn()

@@ -3,7 +3,7 @@ extends Node2D
 var currentScreen:=Vector2i.ZERO
 var currentTileColor:=0
 
-const tileColors:PackedColorArray=[Color.LIGHT_CORAL,Color.CYAN,Color.DEEP_PINK,Color.GREEN_YELLOW,Color.ROYAL_BLUE,Color.ORANGE,Color.GOLDENROD,Color.MEDIUM_PURPLE]
+const tileColors:PackedColorArray=[Color.LIGHT_CORAL,Color.CYAN,Color.LIGHT_GREEN,Color.GREEN_YELLOW,Color.ROYAL_BLUE,Color.ORANGE,Color.GOLDENROD,Color.MEDIUM_PURPLE]
 
 func _ready() -> void:
 	updateTileColors()
@@ -11,7 +11,6 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	updateCamera()
 	
-
 func updateCamera() -> void:
 	var cameraOffset=$Player.position-$Camera2D.position
 	$Camera2D/Label.text=str(cameraOffset)
@@ -24,11 +23,11 @@ func updateCamera() -> void:
 		currentTileColor-=1
 		updateTileColors()
 	if cameraOffset.y>632:
-		$Camera2D.position.y+=616
+		$Camera2D.position.y+=632
 		currentTileColor+=3
 		updateTileColors()
 	elif cameraOffset.y<16:
-		$Camera2D.position.y-=616
+		$Camera2D.position.y-=632
 		currentTileColor-=3
 		updateTileColors()
 
