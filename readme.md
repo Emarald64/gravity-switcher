@@ -1,6 +1,6 @@
 # Gravity Switcher
 
-Platforming game where you switch gravity
+Platforming game where you switch gravity instead of jump.
 
 Inspired by [VVVVVV](https://store.steampowered.com/app/70300/VVVVVV/)
 

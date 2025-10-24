@@ -12,3 +12,4 @@ func _ready() -> void:
 func updateTileColors(changeBy:=0) -> void:
 	currentTileColor=(currentTileColor+changeBy)%9
 	$TileMapLayer.self_modulate=tileColors[currentTileColor]
+	get_tree().set_group("Light Recolor",'modulate',tileColors[currentTileColor].lightened(0.5))

@@ -5,6 +5,7 @@ const SPEED = 600
 var gravityUp:=false
 @onready var checkpoint:=get_node("../StartPos")
 var respawnFlipped:=false
+@onready var initalScale:=scale.y
 
 func _physics_process(_delta: float) -> void:
 	if Input.is_key_pressed(KEY_R):
@@ -32,6 +33,9 @@ func respawn() -> void:
 	print('respawn')
 	get_node('../Camera2D').add_trauma(0.3)
 	position=checkpoint.global_position
+	gravityUp=respawnFlipped
+	up_direction=Vector2.DOWN if respawnFlipped else Vector2.UP
+	scale.y=initalScale * (-1 if respawnFlipped else 1)
 
 
 func hit(_area: Node2D) -> void:
