@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://55bjchese17a"]
+
+[ext_resource type="PackedScene" uid="uid://bupw58p5e001q" path="res://scenes/checkpoint.tscn" id="1_8qifr"]
+
+[node name="flipped Checkpoint" instance=ExtResource("1_8qifr")]
+position = Vector2(0, 8)
+rotation = 3.1415927
+checkPointFlipped = true

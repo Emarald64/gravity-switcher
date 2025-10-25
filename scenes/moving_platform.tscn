@@ -1,12 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://3o21olq8mafs"]
 
-[ext_resource type="Script" uid="uid://clar4md52513b" path="res://scenes/moving_platform.gd" id="1_ms375"]
+[ext_resource type="Script" uid="uid://cca6064vw8xbb" path="res://scenes/moving_object.gd" id="1_ms375"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cbp6d"]
 size = Vector2(80, 16)
 
 [node name="Moving Platform" type="AnimatableBody2D" groups=["Light Recolor"]]
 script = ExtResource("1_ms375")
+movingVertical = false
+maxDistance = 200.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_cbp6d")

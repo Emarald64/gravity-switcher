@@ -19,18 +19,23 @@ func _process(delta: float) -> void:
 	var cameraOffset=get_node('../Player').position-position
 	$Label.text=str(cameraOffset)
 	var colorChange:=0
-	if cameraOffset.x>1136:
+	# problbly a better way to do this
+	while cameraOffset.x>1136:
 		position.x+=1120
 		colorChange+=1
-	elif cameraOffset.x<16:
+		cameraOffset=get_node('../Player').position-position
+	while cameraOffset.x<16:
 		position.x-=1120
 		colorChange-=1
-	if cameraOffset.y>632:
+		cameraOffset=get_node('../Player').position-position
+	while cameraOffset.y>632:
 		position.y+=632
 		colorChange+=3
-	elif cameraOffset.y<16:
+		cameraOffset=get_node('../Player').position-position
+	while cameraOffset.y<16:
 		position.y-=632
 		colorChange-=3
+		cameraOffset=get_node('../Player').position-position
 		
 	if colorChange!=0:
 		get_parent().updateTileColors(colorChange)

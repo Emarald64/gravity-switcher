@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4ere685kluyb"]
+[gd_scene load_steps=6 format=3 uid="uid://c4ere685kluyb"]
 
 [ext_resource type="Texture2D" uid="uid://cnnkyfeexke00" path="res://assets/monochrome_tilemap_transparent.png" id="1_lkddv"]
+[ext_resource type="Script" uid="uid://cca6064vw8xbb" path="res://scenes/moving_object.gd" id="2_cy2sr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cy2sr"]
 atlas = ExtResource("1_lkddv")
@@ -14,9 +15,11 @@ region = Rect2(34, 110, 16, 8)
 size = Vector2(16, 8)
 
 [node name="Moving spike block" type="Sprite2D"]
+modulate = Color(1, 0.16470589, 0, 1)
 texture_filter = 1
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_cy2sr")
+script = ExtResource("2_cy2sr")
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(0, -12)
