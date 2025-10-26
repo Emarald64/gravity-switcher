@@ -1,6 +1,11 @@
 extends CharacterBody2D
 
 
+@export_group("Sound Affects")
+@export var jump1:AudioStreamWAV
+@export var jump2:AudioStreamWAV
+@export var die:AudioStreamWAV
+
 const SPEED = 600
 var gravityUp:=false
 @onready var checkpoint:=get_node("../StartPos")
@@ -22,7 +27,7 @@ func _physics_process(_delta: float) -> void:
 			gravityUp=not gravityUp
 			scale.y*=-1
 			up_direction=-up_direction
-			$SoundPlayer.stream=preload('res://assets/jump2.wav') if gravityUp else preload('res://assets/jump1.wav')
+			$SoundPlayer.stream=preload('res://assets/sfx/jump2.wav') if gravityUp else preload('res://assets/sfx/jump1.wav')
 			$SoundPlayer.play()
 		
 		var direction=Input.get_axis("move_left", "move_right")
@@ -43,7 +48,7 @@ func respawn() -> void:
 		# set flag
 		respawning=true
 		# play sfx
-		$SoundPlayer.stream=preload("res://assets/hurt.wav")
+		$SoundPlayer.stream=preload("res://assets/sfx/hurt.wav")
 		$SoundPlayer.play()
 		# shake camera
 		get_node('../Camera2D').add_trauma(0.3)

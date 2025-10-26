@@ -1,12 +1,12 @@
 extends Node2D
 
-enum endBehavour {LOOP,FREE,STOP}
+enum endBehavour {FREE,STOP,LOOP_REVERSE,LOOP_TELEPORT}
 
 @export var initailSpeed:=200.0
 @export var movingVertical:=true
 @export var minDistance:float
 @export var maxDistance:float
-@export var end:=endBehavour.LOOP
+@export var end:=endBehavour.LOOP_REVERSE
 @onready var startPos:=position
 @onready var speed:=initailSpeed
 var resetting:=false
@@ -14,11 +14,13 @@ var resetting:=false
 func _physics_process(delta: float) -> void:
 	if not resetting:
 		match end:
-			endBehavour.LOOP:
+			endBehavour.LOOP_REVERSE:
 				var changingDir=(getPos()+speed*delta)>=maxDistance or (getPos()+speed*delta)<=minDistance
 				setPos(pingpong(getPos()+speed*delta-minDistance,maxDistance-minDistance)+minDistance)
 				if changingDir:
 					speed*=-1
+			endBehavour.LOOP_TELEPORT:
+				setPos(fposmod(getPos()+speed*delta-minDistance,maxDistance-minDistance)+minDistance)
 			endBehavour.FREE:
 				if (getPos()+speed*delta)>maxDistance or (getPos()+speed*delta)<minDistance:
 					queue_free()

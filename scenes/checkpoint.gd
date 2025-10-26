@@ -5,6 +5,7 @@ var active:=false
 
 func activate(player:Node2D)->void:
 	if not active:
+		$AudioStreamPlayer.play()
 		$AnimatedSprite2D.play("active")
 		if player.checkpoint is Checkpoint:
 			player.checkpoint.deactivate()

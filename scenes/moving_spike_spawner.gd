@@ -1,6 +1,6 @@
 extends Node2D
 
-enum endBehavour {LOOP,FREE,STOP}
+enum endBehavour {FREE,STOP,LOOP_REVERSE,LOOP_TELEPORT}
 
 @export var cooldown:=1.0
 @export var initialDelay:=0.0

@@ -17,7 +17,6 @@ func _process(delta: float) -> void:
 		offset.y = max_offset.y * amount * randf_range(-1, 1)
 	
 	var cameraOffset=get_node('../Player').position-position
-	$Label.text=str(cameraOffset)
 	var colorChange:=0
 	# problbly a better way to do this
 	while cameraOffset.x>1136:

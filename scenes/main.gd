@@ -10,5 +10,6 @@ func _ready() -> void:
 
 func updateTileColors(changeBy:=0) -> void:
 	currentTileColor=(currentTileColor+changeBy)%8
+	$Player.modulate=tileColors[currentTileColor].inverted().lightened(0.25)
 	get_tree().set_group("Recolor",'modulate',tileColors[currentTileColor])
 	get_tree().set_group("Light Recolor",'modulate',tileColors[currentTileColor].lightened(0.5))
