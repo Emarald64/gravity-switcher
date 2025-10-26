@@ -1,5 +1,7 @@
 # Gravity Switcher
 
+![hackatime](https://hackatime-badge.hackclub.com/U0785D5VDEK/gravity-switcher)
+
 Platforming game where you switch gravity instead of jump.
 
 Inspired by [VVVVVV](https://store.steampowered.com/app/70300/VVVVVV/)

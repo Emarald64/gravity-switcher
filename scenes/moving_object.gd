@@ -1,19 +1,38 @@
 extends Node2D
 
-@export var speed:=200
+enum endBehavour {LOOP,FREE,STOP}
+
+@export var initailSpeed:=200.0
 @export var movingVertical:=true
 @export var minDistance:float
 @export var maxDistance:float
-@export var loop:=true
+@export var end:=endBehavour.LOOP
+@onready var startPos:=position
+@onready var speed:=initailSpeed
+var resetting:=false
 
 func _physics_process(delta: float) -> void:
-	var changingDir=(getPos()+speed*delta)>=maxDistance or (position.x+speed*delta)<=minDistance
-	setPos(pingpong(getPos()+speed*delta-minDistance,maxDistance-minDistance)+minDistance)
-	if changingDir:
-		if loop:
-			speed*=-1
-		else:
-			queue_free()
+	if not resetting:
+		match end:
+			endBehavour.LOOP:
+				var changingDir=(getPos()+speed*delta)>=maxDistance or (getPos()+speed*delta)<=minDistance
+				setPos(pingpong(getPos()+speed*delta-minDistance,maxDistance-minDistance)+minDistance)
+				if changingDir:
+					speed*=-1
+			endBehavour.FREE:
+				if (getPos()+speed*delta)>maxDistance or (getPos()+speed*delta)<minDistance:
+					queue_free()
+				else:
+					setPos(getPos()+speed*delta)
+			endBehavour.STOP:
+				if (getPos()+speed*delta)>=maxDistance:
+					speed=0
+					setPos(maxDistance)
+				elif (getPos()+speed*delta)<=minDistance:
+					speed=0
+					setPos(minDistance)
+				else:
+					setPos(getPos()+speed*delta)
 
 func getPos()->float:
 	return position.y if movingVertical else position.x
@@ -23,3 +42,17 @@ func setPos(value:float)->void:
 		position.y=value
 	else:
 		position.x=value
+#
+#func set_speed(value:float)->void:
+	#speed=value
+
+func set_speed_unbind_first(_a,value:float):
+	speed=value
+
+func reset()->void:
+	resetting=true
+	await get_tree().physics_frame
+	speed=initailSpeed
+	position=startPos
+	await get_tree().physics_frame
+	resetting=false
