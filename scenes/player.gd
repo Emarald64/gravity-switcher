@@ -24,8 +24,16 @@ func _physics_process(_delta: float) -> void:
 			up_direction=-up_direction
 			$SoundPlayer.stream=preload('res://assets/jump2.wav') if gravityUp else preload('res://assets/jump1.wav')
 			$SoundPlayer.play()
-
-		velocity.x = Input.get_axis("move_left", "move_right")*SPEED
+		
+		var direction=Input.get_axis("move_left", "move_right")
+		if direction:
+			$Sprite2D.scale.x=signf(direction)*0.333
+		if direction and is_on_floor():
+			$Sprite2D.speed_scale=1.0
+		else:
+			$Sprite2D.frame=0
+			$Sprite2D.speed_scale=0.0
+		velocity.x = direction*SPEED
 		
 		move_and_slide()
 
@@ -39,6 +47,8 @@ func respawn() -> void:
 		$SoundPlayer.play()
 		# shake camera
 		get_node('../Camera2D').add_trauma(0.3)
+		
+		$Sprite2D.speed_scale=0.0
 		
 		# wait for 0.5 seconds
 		await get_tree().create_timer(0.5).timeout
