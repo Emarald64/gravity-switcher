@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://7f8lcjsn85gs"]
+[gd_scene load_steps=20 format=4 uid="uid://7f8lcjsn85gs"]
 
 [ext_resource type="Script" uid="uid://kcleligebfuw" path="res://scenes/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://e38o5vkfb20e" path="res://scenes/player.tscn" id="2_sugp2"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://b0x1uc11q0qlm" path="res://scenes/camera_2d.gd" id="5_tefeu"]
 [ext_resource type="PackedScene" uid="uid://c4ere685kluyb" path="res://scenes/moving_spike_block.tscn" id="8_tipki"]
 [ext_resource type="PackedScene" uid="uid://m11x37fltek2" path="res://scenes/moving_spike_spawner.tscn" id="9_85g3d"]
+[ext_resource type="AudioStream" uid="uid://cmu0qn8ypejd" path="res://assets/sfx/tada.mp3" id="10_choun"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jyhfs"]
 texture = ExtResource("3_sugp2")
@@ -650,6 +651,9 @@ alpha_curve = SubResource("CurveTexture_choun")
 hue_variation_min = -2.2351742e-08
 hue_variation_max = 0.99999994
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ya4ey"]
+size = Vector2(966, 575)
+
 [node name="main" type="Node2D"]
 script = ExtResource("1_jyhfs")
 
@@ -818,13 +822,26 @@ amount = 32
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_eb6dy")
 
+[node name="End Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_choun")
+
+[node name="Play end sound" type="Area2D" parent="."]
+position = Vector2(-2142, 44)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Play end sound"]
+position = Vector2(454, 262.5)
+shape = SubResource("RectangleShape2D_ya4ey")
+
 [connection signal="body_entered" from="NonRecolored/Checkpoint" to="NonRecolored/Checkpoint" method="activate"]
-[connection signal="body_entered" from="NonRecolored/@Area2D@21188" to="NonRecolored/@Area2D@21188" method="activate"]
+[connection signal="body_entered" from="NonRecolored/@Area2D@21236" to="NonRecolored/@Area2D@21236" method="activate"]
 [connection signal="body_entered" from="NonRecolored/flipped Checkpoint" to="NonRecolored/flipped Checkpoint" method="activate"]
-[connection signal="body_entered" from="NonRecolored/@Area2D@21189" to="NonRecolored/@Area2D@21189" method="activate"]
-[connection signal="body_entered" from="NonRecolored/@Area2D@21190" to="NonRecolored/@Area2D@21190" method="activate"]
-[connection signal="body_entered" from="NonRecolored/@Area2D@21191" to="NonRecolored/@Area2D@21191" method="activate"]
-[connection signal="body_entered" from="NonRecolored/@Area2D@21192" to="NonRecolored/@Area2D@21192" method="activate"]
-[connection signal="body_entered" from="NonRecolored/@Area2D@21193" to="NonRecolored/@Area2D@21193" method="activate"]
-[connection signal="body_entered" from="NonRecolored/@Area2D@21194" to="NonRecolored/@Area2D@21194" method="activate"]
+[connection signal="body_entered" from="NonRecolored/@Area2D@21237" to="NonRecolored/@Area2D@21237" method="activate"]
+[connection signal="body_entered" from="NonRecolored/@Area2D@21238" to="NonRecolored/@Area2D@21238" method="activate"]
+[connection signal="body_entered" from="NonRecolored/@Area2D@21239" to="NonRecolored/@Area2D@21239" method="activate"]
+[connection signal="body_entered" from="NonRecolored/@Area2D@21240" to="NonRecolored/@Area2D@21240" method="activate"]
+[connection signal="body_entered" from="NonRecolored/@Area2D@21241" to="NonRecolored/@Area2D@21241" method="activate"]
+[connection signal="body_entered" from="NonRecolored/@Area2D@21242" to="NonRecolored/@Area2D@21242" method="activate"]
 [connection signal="body_entered" from="Start Moving wall" to="Moving wall" method="set_speed_unbind_first" binds= [-1000.0]]
+[connection signal="body_entered" from="Play end sound" to="End Sound" method="play" unbinds=1]
