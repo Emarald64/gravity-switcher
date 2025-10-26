@@ -8,7 +8,7 @@ Inspired by [VVVVVV](https://store.steampowered.com/app/70300/VVVVVV/)
 
 Tileset from https://kenney.nl/assets/1-bit-platformer-pack
 
-Sound Affects made with sfxr
+Sound Effects made with sfxr
 
 Made with the Godot Engine
 
