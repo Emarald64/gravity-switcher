@@ -21,7 +21,7 @@ or
 1. Download Godot from https://godotengine.org/
 
 2. Download the repo using
-``git clone https://github.com/Emarald64/signals.git``
+``git clone https://github.com/Emarald64/gravity-switcher.git``
 
 4. Import the folder you cloned the repo into Godot 
 
