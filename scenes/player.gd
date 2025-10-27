@@ -12,6 +12,7 @@ var gravityUp:=false
 var respawnFlipped:=false
 @onready var initalScale:=scale.y
 var respawning:=false
+var deaths:=0
 
 func _physics_process(_delta: float) -> void:
 	if not respawning:
@@ -53,7 +54,12 @@ func respawn() -> void:
 		# shake camera
 		get_node('../Camera2D').add_trauma(0.3)
 		
+		# Stop walking animation
 		$Sprite2D.speed_scale=0.0
+		
+		# Update ending text
+		deaths+=1
+		get_node("/root/main/Control/Deaths").text="Deaths: "+str(deaths)
 		
 		# wait for 0.5 seconds
 		await get_tree().create_timer(0.5).timeout
