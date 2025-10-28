@@ -2,6 +2,8 @@
 
 ![hackatime](https://hackatime-badge.hackclub.com/U0785D5VDEK/gravity-switcher)
 
+<img width="686" height="544" alt="gravity_switcher_cover" src="https://github.com/user-attachments/assets/92526d69-233c-4534-ab3b-d7adddb89000" />
+
 Platforming game where you switch gravity instead of jump.
 
 Inspired by [VVVVVV](https://store.steampowered.com/app/70300/VVVVVV/)
